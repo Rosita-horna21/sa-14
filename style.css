@@ -1,0 +1,771 @@
+:root {
+    --color-principal: #FF0080; /* Rojo Vibrante / Fucsia */
+    --color-secundario: #FF0000; /* Rojo Intenso */
+    --color-texto-claro: #f7f7f7;
+    --color-fondo-oscuro: #111111;
+}
+
+body {
+    font-family: "Georgia", serif;
+    background: #0d0d0d; /* Fondo negro */
+    margin: 0;
+    padding: 0;
+    color: var(--color-texto-claro); /* Usar variable */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HEADER */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: var(--color-fondo-oscuro);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--color-texto-claro);
+}
+
+.logo span {
+    color: var(--color-principal);
+}
+
+/* Logo animado */
+.logo-animada {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    animation: girarLogo 3s linear infinite;
+    box-shadow: 0 0 15px var(--color-principal);
+}
+
+@keyframes girarLogo {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+/* NAV */
+.nav {
+    display: flex;
+    gap: 5px;
+    padding-right: 0px;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-item a {
+    color: var(--color-texto-claro);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.menu-item:hover > a {
+    color: var(--color-principal);
+    text-shadow: 0 0 10px var(--color-principal);
+}
+
+/* SUBMENÚ */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #111;
+    padding: 12px 0;
+    border-radius: 8px;
+    min-width: 180px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.6);
+    flex-direction: column;
+}
+
+.submenu a {
+    padding: 12px 18px;
+    text-decoration: none;
+    color: var(--color-texto-claro);
+    display: block;
+    font-size: 15px;
+    transition: background 0.3s ease, padding-left 0.3s ease;
+}
+
+.submenu a:hover {
+    background: var(--color-principal);
+    color: #000;
+    padding-left: 25px;
+    font-weight: bold;
+}
+
+.menu-item:hover .submenu {
+    display: flex;
+}
+
+
+/* SECCIÓN DESTACADO */
+.destacado-moda {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* Ajuste para el header fijo */
+    padding: 120px 20px 60px 20px;
+    background-color: #1a1a1a;
+    width: 100%;
+}
+
+.destacado-moda h2 {
+    font-size: 2.5em;
+    animation:
+        fadeInText 2s forwards 0.5s,
+        crecerYColorEstilo 2s infinite alternate ease-in-out 2.5s;
+}
+
+.destacado-moda p {
+    max-width: 450px;
+}
+
+.boton-lujo {
+    background: linear-gradient(135deg, var(--color-principal), var(--color-secundario));
+    border: none;
+    padding: 12px 25px;
+    color: white;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.5s ease;
+}
+
+.boton-lujo:hover {
+    background: linear-gradient(135deg, var(--color-secundario), var(--color-principal));
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--color-principal);
+}
+
+.destacado-moda img {
+    width: 450px;
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    animation: mover-transformar 6s ease-in-out infinite, scale-up-down 4s ease-in-out infinite;
+}
+
+/* GALERÍA */
+.galeria-estilos {
+    text-align: center;
+    padding: 30px 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.galeria-estilos .grid-estilos {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    margin-top: 30px;
+    justify-content: center;
+    padding: 0 20px;
+    flex-wrap: nowrap;
+    max-width: 100%;
+}
+
+.galeria-estilos img {
+    width: 250px;
+    max-width: 100%;
+    flex-shrink: 0;
+    border-radius: 10px;
+    transition: transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease;
+    cursor: pointer;
+}
+
+.galeria-estilos img:hover {
+    transform: scale(1.15);
+    opacity: 0.9;
+    box-shadow: 0 0 20px var(--color-principal);
+}
+
+/* PRODUCTOS */
+.productos {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.grid-productos {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* TARJETAS DE PRODUCTOS */
+.tarjeta-prenda {
+    width: 300px;
+    background: #1a1a1a;
+    border: 2px solid var(--color-principal);
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 5px 18px rgba(255, 0, 128, 0.15); /* Usar color principal en sombra */
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 1;
+    animation: fadeUp 1s forwards;
+}
+
+.tarjeta-prenda:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px var(--color-principal),
+              0 0 30px var(--color-principal) inset;
+    animation: brilloTarjetaRojo 0.6s alternate;
+}
+
+.img-contenedor {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.img-contenedor img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* BOTONES */
+.boton-prenda {
+    background: linear-gradient(135deg, var(--color-principal), var(--color-secundario));
+    border: none;
+    padding: 12px 20px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.boton-prenda:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--color-principal);
+}
+
+
+/* SECCIÓN: SUSCRIPCIÓN Y MANO ANIMADA */
+.suscripcion-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 60px auto;
+    background: #1a1a1a;
+    border: 2px solid var(--color-principal);
+    border-radius: 15px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 30px rgba(255, 0, 128, 0.4);
+}
+
+.suscripcion-form-box {
+    max-width: 60%;
+    z-index: 2;
+}
+
+.suscripcion-form-box h2 {
+    font-size: 2em;
+    margin-top: 0;
+    color: var(--color-texto-claro);
+}
+
+.suscripcion-form-box h2 span {
+    color: var(--color-principal);
+}
+
+.formulario-suscripcion {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.formulario-suscripcion input[type="email"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 2px solid var(--color-principal);
+    border-radius: 8px;
+    background-color: #0d0d0d;
+    color: var(--color-texto-claro);
+    font-size: 1em;
+}
+
+.mano-animada-wrapper {
+    position: absolute;
+    /* CAMBIOS AQUÍ: Reducir 'right' y ajustar 'top' */
+    right: 100px; /* Estaba en -20px. Moverla más hacia el centro/izquierda */
+    top: 77%; /* Estaba en 75%. Centrarla verticalmente */
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.mano-apuntando {
+    width: 150px;
+    /* Cambiar el 'translateX' inicial para que empiece fuera */
+    transform: translateX(100%);
+    /* Ajustar el nombre de la animación si fuera necesario, pero la animación 'manoSeñalando' actual está bien para esto. */
+    animation: manoSeñalando 4s infinite alternate ease-in-out 1s;
+    filter: drop-shadow(0 0 10px var(--color-principal));
+}
+
+
+/* CUADRO NOTICIA (Promo Ropa) */
+.cuadro-promo {
+    position: fixed;
+    top: 150px;
+    right: 20px;
+    width: 300px;
+    padding: 20px;
+    background: #251e1e;
+    border-left: 6px solid var(--color-principal);
+    border-radius: 12px;
+    text-align: left;
+    animation: moverDerechaSuave 8s infinite alternate ease-in-out;
+    z-index: 10;
+}
+
+.cuadro-promo h3 {
+    color: var(--color-principal);
+}
+
+/* BANNER ANIMADO */
+.banner {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: var(--color-secundario);
+    color: var(--color-texto-claro);
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 12px;
+}
+
+/* Banner de nuevos artículos (Pulsante) */
+.banner.animado-nuevo {
+    animation: animarbannerRojo 3s 1.5s infinite alternate;
+}
+
+/* Banner de descuento (Movimiento lateral) */
+.banner.animado-descuento {
+    background: #000;
+    border: 2px dashed var(--color-principal);
+    color: var(--color-principal);
+    /* Quité 'forwards' para que se repita o se mantenga visible */
+    animation: moverBannerRojo 3s ease-out;
+}
+
+/* Banner de envío gratis (Aparece desde izquierda) */
+.banner.animado-izquierda-oferta {
+    animation: aparecerDesdeIzquierdaRojo 2s forwards;
+    background-color: var(--color-secundario);
+}
+
+
+/* LOADING DE PRENDAS */
+#loading-prendas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0d0d0d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.animaciones-moda {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+    height: 150px;
+    overflow: visible;
+}
+
+.prenda-box-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(-150px);
+    animation: entradaIzquierdaRojo 1.5s forwards;
+}
+
+/* Delays para figuras */
+.prenda-box-wrapper:nth-child(1) { animation-delay: 0s; }
+.prenda-box-wrapper:nth-child(2) { animation-delay: 0.3s; }
+.prenda-box-wrapper:nth-child(3) { animation-delay: 0.6s; }
+.prenda-box-wrapper:nth-child(4) { animation-delay: 0.9s; }
+
+
+.prenda-box {
+    font-size: 50px;
+    color: var(--color-principal);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--color-principal);
+    border-radius: 12px;
+    text-shadow: 0 0 10px var(--color-principal), 0 0 20px rgba(255, 0, 128, 0.8) inset;
+    animation: brilloPulsanteRojo 1.5s infinite alternate;
+}
+
+/* BOTÓN FLOTANTE WHATSAPP */
+.whatsapp-flotante {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    overflow: hidden;
+    animation: deslizarWhatsapp 5s infinite alternate ease-in-out;
+}
+
+.whatsapp-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+   
+    filter: none;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background-color: var(--color-fondo-oscuro);
+    margin-top: 40px;
+    border-top: 1px solid var(--color-secundario);
+}
+
+/* =================================================== */
+/* KEYFRAMES                   */
+/* =================================================== */
+
+@keyframes brilloTarjetaRojo {
+    0% { box-shadow: 0 10px 25px rgba(255, 0, 128, 0.3), 0 0 10px rgba(255, 0, 128, 0.2) inset; }
+    100% { box-shadow: 0 10px 25px rgba(255, 0, 128, 0.7), 0 0 30px rgba(255, 0, 128, 0.5) inset; }
+}
+
+@keyframes mover-transformar {
+    0% { transform: translateX(0) scale(1) rotate(0deg); }
+    25% { transform: translateX(10px) scale(1.02) rotate(1deg); }
+    50% { transform: translateX(0) scale(1.05) rotate(0deg); }
+    75% { transform: translateX(-10px) scale(1.02) rotate(-1deg); }
+    100% { transform: translateX(0) scale(1) rotate(0deg); }
+}
+
+@keyframes scale-up-down {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes moverDerechaSuave {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-20px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes crecerYColorEstilo {
+    0% {
+        transform: scale(1);
+        color: var(--color-texto-claro);
+        text-shadow: none;
+    }
+
+    100% {
+        transform: scale(1.15);
+        color: var(--color-principal);
+        text-shadow: 0 0 10px var(--color-principal), 0 0 20px rgba(255, 0, 128, 0.8);
+    }
+}
+
+/* Banner Pulsante */
+@keyframes animarbannerRojo {
+    0% {
+        background-color: var(--color-secundario);
+        transform: scale(1);
+        color: var(--color-texto-claro);
+    }
+
+    100% {
+        background-color: var(--color-principal);
+        transform: scale(1.06);
+        color: #0d0d0d;
+        box-shadow: 0 0 20px var(--color-principal);
+    }
+}
+
+/* Banner Movimiento Lateral */
+@keyframes moverBannerRojo {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Banner Entrada Izquierda */
+@keyframes aparecerDesdeIzquierdaRojo {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/* Loading Entrada Izquierda */
+@keyframes entradaIzquierdaRojo {
+    0% {
+        transform: translateX(-150px) scale(0);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(10px) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Loading Brillo Pulsante */
+@keyframes brilloPulsanteRojo {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 10px var(--color-principal), 0 0 20px rgba(255, 0, 128, 0.8) inset;
+        box-shadow: 0 0 10px var(--color-principal), 0 0 20px rgba(255, 0, 128, 0.8) inset;
+    }
+    50% {
+        transform: scale(1.15);
+        text-shadow: 0 0 25px var(--color-principal), 0 0 40px rgba(255, 0, 128, 1) inset;
+        box-shadow: 0 0 25px var(--color-principal), 0 0 40px rgba(255, 0, 128, 1) inset;
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px var(--color-principal), 0 0 20px rgba(255, 0, 128, 0.8) inset;
+        box-shadow: 0 0 10px var(--color-principal), 0 0 20px rgba(255, 0, 128, 0.8) inset;
+    }
+}
+
+/* Animación de la mano que viene desde la derecha */
+@keyframes manoSeñalando {
+    0% {
+        transform: translateX(100%) translateY(-50%) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(0) translateY(-50%) rotate(5deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(20px) translateY(-50%) rotate(-5deg);
+        opacity: 1;
+    }
+}
+
+/* Animación del logo de WhatsApp que se mueve de izquierda a derecha */
+@keyframes deslizarWhatsapp {
+    0% {
+        transform: translateX(0) scale(1);
+    }
+    50% {
+        transform: translateX(15px) scale(1.1);
+        box-shadow: 0 5px 25px #25d366;
+    }
+    100% {
+        transform: translateX(0) scale(1);
+    }
+}
+
+
+/* =================================================== */
+/* RESPONSIVE                    */
+/* =================================================== */
+@media (max-width: 1200px) {
+    .header {
+        padding: 20px 20px;
+    }
+
+    .nav {
+        padding-right: 20px; /* Reducido para pantallas más pequeñas */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .destacado-moda {
+        flex-direction: column;
+        gap: 20px;
+        /* Restaurar el padding superior para móviles */
+        padding-top: 20px;
+    }
+
+    .galeria-estilos .grid-estilos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px; /* Reducir gap en la galería */
+    }
+
+    /* El header se convierte en columna y no está fijo, permitiendo scroll. */
+    .header {
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding-top: 20px;
+    }
+
+    /* El NAV se apila verticalmente para ocupar menos ancho */
+    .nav {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+        text-align: center;
+        margin-top: 15px;
+        padding-right: 0;
+    }
+
+    .menu-item {
+        padding: 8px 0;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 0, 128, 0.1);
+    }
+
+    /* Submenu ajustado para móvil */
+    .menu-item:hover .submenu {
+        display: none; /* Mejor ocultar submenús en vista móvil */
+    }
+
+
+    .cuadro-promo {
+        position: relative;
+        right: auto;
+        top: auto;
+        margin: 20px auto;
+        width: 90%;
+        animation: none;
+    }
+
+    .animaciones-moda {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* Suscripción en móvil */
+    .suscripcion-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .suscripcion-form-box {
+        max-width: 100%;
+    }
+
+    .formulario-suscripcion {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .mano-animada-wrapper {
+        position: static;
+        transform: none;
+        margin-top: 20px;
+        display: none; /* Ocultar la mano en dispositivos pequeños */
+    }
+}
+
+@media (max-width: 480px) {
+    .galeria-estilos .grid-estilos {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .destacado-moda h2 {
+        font-size: 1.8em;
+    }
+
+    .img-contenedor {
+        height: 200px;
+    }
+
+    .grid-productos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tarjeta-prenda {
+        width: 90%;
+    }
+
+    .whatsapp-flotante {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+        left: 15px;
+    }
+
+    .banner {
+        font-size: 18px;
+    }
+}
